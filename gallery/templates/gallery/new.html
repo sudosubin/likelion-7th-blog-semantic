@@ -1,0 +1,35 @@
+{% extends 'gallery/layout.html' %}
+
+{% block subtitle %}새 사진 올리기{% endblock %}
+
+{% block content %}
+    <main class="ui text container">
+        <form class="ui form" action="" method="POST">
+            {% csrf_token %}
+            <div class="field">
+                <label>제목</label>
+                <input name="title" type="text">
+            </div>
+            <div class="field">
+                <label>설명</label>
+                <textarea name="info"></textarea>
+            </div>
+
+            <div class="field">
+                <div class="ui action input">
+                    <input type="text" placeholder="사진 업로드" readonly>
+                    <input name="image" type="file">
+                    <div class="ui icon button">
+                        <i class="attach icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <input class="ui button" type="submit" value="사진 올리기">
+        </form>
+
+        <script>
+
+        </script>
+    </main>
+{% endblock %}

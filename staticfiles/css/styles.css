@@ -1,0 +1,39 @@
+@charset "UTF-8";
+@import "font.css";
+
+.my-2 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+.py-1 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+.main.menu {
+    background-color: white !important;
+    transition: box-shadow 0.1s, 0.1s, 0.1s, 0.1s;
+}
+
+.main.menu.fixed {
+    box-shadow: 0 1px 3px 0 #d4d4d5;
+}
+
+.footer {
+    margin: 3em 0em 0em !important;
+    padding: 3em 0em !important;
+}
+
+.ui.action.input input[type="file"] {
+  display: none;
+}

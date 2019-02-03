@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>{% block subtitle %}{% endblock %} | {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/semantic.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+</head>
+<body>
+<header>
+    <section class="ui text container mt-2">
+        <a class="ui center aligned icon header" href="{% url "root" %}">
+            <i class="circular forward icon"></i>빨리감기
+        </a>
+    </section>
+    <nav class="ui secondary stackable main menu py-1">
+        <div class="ui text container">
+            <a href="{% url "root" %}" class="{% block root_class %}{% endblock %} item"><i class="world icon"></i>홈</a>
+            <a href="{% url "blog:home" %}" class="{% block blog_class %}{% endblock %} item"><i
+                    class="book icon"></i>블로그</a>
+            <a href="{% url "gallery:home" %}" class="{% block gallery_class %}{% endblock %} item"><i
+                    class="images outline icon"></i>갤러리</a>
+            <a href="{% static "documents/cert.pdf" %}" class=" item"><i
+                    class="file pdf icon"></i>수료증</a>
+            <div class="right menu">
+                <div class="item">
+                    <div class="ui transparent icon input">
+                        <input type="text" placeholder="검색하기">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+{% block content %}{% endblock %}
+<footer class="ui inverted vertical footer segment">
+    <section class="ui center aligned container">
+        <h4 class="ui center aligned icon header">
+            <i class="circular inverted grey forward icon"></i>
+        </h4>
+        <div class="ui horizontal inverted small divided link list">
+            <a class="item" href="https://github.com/bookfairy"><i class="github icon"></i> GitHub</a>
+            <a class="item" href="#">블로그 소개</a>
+        </div>
+    </section>
+</footer>
+<script src="{% static "js/jquery-3.1.1.min.js" %}"></script>
+<script src="{% static "js/semantic.min.js" %}"></script>
+<script src="{% static "js/styles.js" %}"></script>
+</body>
+</html>

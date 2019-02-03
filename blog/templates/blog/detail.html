@@ -1,0 +1,40 @@
+{% extends 'blog/layout.html' %}
+
+{% block subtitle %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <main class="ui text container">
+        <h1 class="ui dividing header">{{ post.title }}
+            <div class="sub header">{{ post.published_at }}</div>
+        </h1>
+
+        <section class="ui text container my-2">
+            <p>{{ post.content|linebreaks }}</p>
+        </section>
+
+        <section class="ui right aligned container my-2">
+            <a class="ui right labeled icon button" href="{% url "blog:edit" post.id %}">
+                <i class="edit outline icon"></i>글 수정
+            </a>
+            <a class="ui right labeled icon red button" href="{% url "blog:delete" post.id %}">
+                <i class="eraser icon"></i>글 삭제
+            </a>
+        </section>
+
+        <section class="ui center aligned container">
+            <div class="ui buttons">
+                <a class="ui labeled icon {% if post.id|add:"-1" == 0 %}disabled{% endif %} button"
+                   href="{% url "blog:detail" post.id|add:"-1" %}">
+                    <i class="left chevron icon"></i>이전 글
+                </a>
+                <a class="ui button" href="{% url "blog:home" %}">
+                    <i class="list ul icon"></i>목록
+                </a>
+                <a class="ui right labeled icon button"
+                   href="{% url "blog:detail" post.id|add:"1" %}">
+                    <i class="right chevron icon"></i>다음 글
+                </a>
+            </div>
+        </section>
+    </main>
+{% endblock %}

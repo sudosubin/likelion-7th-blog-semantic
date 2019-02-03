@@ -1,0 +1,37 @@
+{% extends 'gallery/layout.html' %}
+
+{% block subtitle %}갤러리{% endblock %}
+
+{% block content %}
+    <main class="ui container">
+        <section class="ui stackable four column grid grid">
+            {% for photo in photos %}
+                <div class="column">
+                    <div class="ui fluid card">
+                        <div class="image">
+                            <img src="{{ photo.image.url }}">
+                        </div>
+                        <div class="content">
+                            <div class="header">{{ photo.title }}</div>
+                            <div class="description">
+                                <p>{{ photo.info }}</p>
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <i class="heart red icon"></i>4 좋아요
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+
+        <section class="ui right aligned container my-2">
+            <a class="ui right labeled icon button" href="{% url "gallery:new" %}">
+                <i class="pencil alternate icon"></i>새 사진 올리기
+            </a>
+            <a class="ui right labeled icon green button" href="/admin/">
+                <i class="clipboard icon"></i>사이트 관리
+            </a>
+        </section>
+    </main>
+{% endblock %}

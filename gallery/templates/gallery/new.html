@@ -4,7 +4,7 @@
 
 {% block content %}
     <main class="ui text container">
-        <form class="ui form" action="" method="POST">
+        <form class="ui form" action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="field">
                 <label>제목</label>

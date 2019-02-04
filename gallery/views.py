@@ -15,7 +15,7 @@ def new_view(request):
         photo = Photo()
         photo.title = request.POST['title']
         photo.info = request.POST['info']
-        photo.image = request.POST['image']
+        photo.image = request.FILES['image']
         photo.save()
         return redirect('/gallery/')
     return render(request, 'gallery/new.html')

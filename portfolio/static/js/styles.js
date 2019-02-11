@@ -15,4 +15,6 @@ $(document).ready(function () {
         var name = e.target.files[0].name;
         $('input:text', $(e.target).parent()).val(name);
     });
+
+    $('.ui.dropdown').dropdown();
 });

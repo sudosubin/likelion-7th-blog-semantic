@@ -25,6 +25,24 @@
                     class="images outline icon"></i>갤러리</a>
             <a href="{% static "documents/cert.pdf" %}" class=" item"><i
                     class="file pdf icon"></i>수료증</a>
+            <div class="ui dropdown item">
+                <span class="text"><i class="user icon"></i>사용자</span>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="header">사용자 정보</div>
+                    {% if user.is_authenticated %}
+                        <div class="item" onClick="javascript:{document.getElementById('logout').submit()}">로그아웃
+                        <form action="{% url "accounts:logout" %}" method="POST" id="logout">
+                        {% csrf_token %}
+                            <input type="hidden">
+                        </form>
+                        </div>
+                    {% else %}
+                        <a class="item" href="{% url "accounts:login" %}">로그인</a>
+                        <a class="item" href="{% url "accounts:signup" %}">회원가입</a>
+                    {% endif %}
+                </div>
+            </div>
             <div class="right menu">
                 <div class="item">
                     <div class="ui transparent icon input">

@@ -1,0 +1,29 @@
+{% extends 'accounts/layout.html' %}
+
+{% block subtitle %}로그인{% endblock %}
+
+{% block content %}
+    <main class="ui text container">
+        {% if error %}
+            <div class="ui negative message">
+                <i class="close icon"></i>
+                <div class="header">오류가 발생했습니다.</div>
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+
+        <div class="ui header">로그인</div>
+        <form class="ui form">
+            {% csrf_token %}
+            <div class="field">
+                <label>이름</label>
+                <input type="text" name="username" placeholder="이름">
+            </div>
+            <div class="field">
+                <label>비밀번호</label>
+                <input type="password" name="password" placeholder="비밀번호">
+            </div>
+            <button class="ui button" type="submit">로그인</button>
+        </form>
+    </main>
+{% endblock %}

@@ -5,7 +5,7 @@
 {% block content %}
     <main class="ui container">
         <section class="ui stackable four column grid grid">
-            {% for post in posts %}
+            {% for post in page_posts %}
                 <div class="column">
                     <a class="ui fluid card" href="{% url "blog:detail" post.id %}">
                         <div class="content">
@@ -23,13 +23,36 @@
             {% endfor %}
         </section>
 
-        <section class="ui right aligned container my-2">
-            <a class="ui right labeled icon button" href="{% url "blog:new" %}">
-                <i class="pencil alternate icon"></i>새 글 쓰기
-            </a>
-            <a class="ui right labeled icon green button" href="/admin/">
-                <i class="clipboard icon"></i>사이트 관리
-            </a>
+        {% if user.is_authenticated %}
+            <section class="ui right aligned container my-2">
+                <a class="ui right labeled icon button" href="{% url "blog:new" %}">
+                    <i class="pencil alternate icon"></i>새 글 쓰기
+                </a>
+                <a class="ui right labeled icon green button" href="/admin/">
+                    <i class="clipboard icon"></i>사이트 관리
+                </a>
+            </section>
+        {% endif %}
+
+        <section class="ui center aligned container">
+            <div class="ui buttons">
+                {% if page_posts.has_previous %}
+                    <a class="ui labeled icon button"
+                       href="?page={{ page_posts.previous_page_number }}">
+                        <i class="left chevron icon"></i>이전 페이지
+                    </a>
+                {% endif %}
+                <a class="ui button" href="#">
+                    <i class="list ul icon"></i>{{ page_posts.number }} / {{ page_posts.paginator.num_pages }}
+                </a>
+
+                {% if page_posts.has_next %}
+                    <a class="ui right labeled icon button"
+                       href="?page={{ page_posts.next_page_number }}">
+                        <i class="right chevron icon"></i>다음 페이지
+                    </a>
+                {% endif %}
+            </div>
         </section>
     </main>
 {% endblock %}

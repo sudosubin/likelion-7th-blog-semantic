@@ -1,12 +1,18 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.core.paginator import Paginator
 from .models import Post
 
 
 def home_view(request):
-    posts = Post.objects.all()[::-1]
+    posts = Post.objects.all().order_by('-id')
+    paginator = Paginator(posts, 8)
+    page = request.GET.get('page')
+    page_posts = paginator.get_page(page)
+
     context = {
         'posts': posts,
+        'page_posts': page_posts,
     }
     return render(request, 'blog/home.html', context)
 

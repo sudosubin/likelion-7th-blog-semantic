@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls', namespace='blog')),
     path('gallery/', include('gallery.urls', namespace='gallery')),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
     path('', lambda r: redirect('blog:home'), name='root'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -25,13 +25,15 @@
             {% endfor %}
         </section>
 
-        <section class="ui right aligned container my-2">
-            <a class="ui right labeled icon button" href="{% url "gallery:new" %}">
-                <i class="pencil alternate icon"></i>새 사진 올리기
-            </a>
-            <a class="ui right labeled icon green button" href="/admin/">
-                <i class="clipboard icon"></i>사이트 관리
-            </a>
-        </section>
+        {% if user.is_authenticated %}
+            <section class="ui right aligned container my-2">
+                <a class="ui right labeled icon button" href="{% url "gallery:new" %}">
+                    <i class="pencil alternate icon"></i>새 사진 올리기
+                </a>
+                <a class="ui right labeled icon green button" href="/admin/">
+                    <i class="clipboard icon"></i>사이트 관리
+                </a>
+            </section>
+        {% endif %}
     </main>
 {% endblock %}
